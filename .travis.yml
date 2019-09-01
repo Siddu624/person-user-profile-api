@@ -2,5 +2,5 @@ language: java
 
 deploy:
   provider: heroku
-  api_key: f647276b-7fcd-48fd-bdd0-3b24e590baee
-  app: person-user-profile-api
+  api_key:
+    secure: f647276b-7fcd-48fd-bdd0-3b24e590baee
