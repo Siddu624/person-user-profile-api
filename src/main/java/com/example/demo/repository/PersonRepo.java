@@ -20,4 +20,6 @@ public interface PersonRepo extends JpaRepository<Person,Integer> {
                                     @Param("personId") Integer personId);
 
     List<Person> findAllByEmail(String email);
+
+    List<Person> findAllByName(String value);
 }

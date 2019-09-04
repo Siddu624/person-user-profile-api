@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -13,6 +14,8 @@ public class PersonController {
 
     @Autowired
     PersonService personService;
+
+
 
     @RequestMapping(value = "/person", method = RequestMethod.POST)
     public String create(@RequestBody Person person){
@@ -27,8 +30,9 @@ public class PersonController {
         return personService.retrieve();
     }
     @RequestMapping(value = "/person/search", method = RequestMethod.GET)
-    public List<Person> search(@RequestParam String key){
-        return personService.search(key);
+    public List<Person> search(@RequestParam Map<String,String> allParams){
+
+        return personService.search(allParams);
     }
 
     @RequestMapping(value = "/person", method = RequestMethod.PUT)

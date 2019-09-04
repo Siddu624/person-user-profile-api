@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PersonService {
@@ -43,7 +44,17 @@ public class PersonService {
         return "Record deleted successfully";
     }
 
-    public List<Person> search(String key) {
-        return personRepo.findAllByEmail(key);
+    public List<Person> search(Map<String,String> keyMap) {
+
+        List<Person> personList = null;
+        for (Map.Entry<String, String> entry : keyMap.entrySet()) {
+             if(entry.getKey().equals("email")) {
+                 personList = personRepo.findAllByEmail(entry.getValue());
+             }
+             else {
+                 personList = personRepo.findAllByName(entry.getValue());
+             }
+        }
+        return personList;
     }
 }
