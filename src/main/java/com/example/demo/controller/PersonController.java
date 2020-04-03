@@ -15,6 +15,7 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
+    //Persom controller has 4 endpoints
     @RequestMapping(value = "/person", method = RequestMethod.POST)
     public String create(@RequestBody Person person){
         return personService.create(person);
